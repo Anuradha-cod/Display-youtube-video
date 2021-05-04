@@ -24,23 +24,27 @@ const YoutubeLink = () => {
       )
       .then((data) => setFindValue(data.data.items))
       .then((error) => console.log(error));
+    setInputValue("");
+    alert("please wait");
   };
-  console.log(findValue);
   return (
-    <div>
-      <form onSubmit={(e) => submitHandler(e)}>
+    <div className="youtube-div">
+      <p className="youtube-para">
+        Search here Any youtube video and after submited wait for few seconds
+      </p>
+      <form className="youtube-form" onSubmit={(e) => submitHandler(e)}>
         <input
           onChange={(e) => handleChange(e)}
           type="search"
           value={inputValue}
         />
-        <input type="submit" value="submit" />
+        <input className="search-input" type="submit" value="submit" />
       </form>
       <div className="display">
         {findValue.map((ele, key) => {
           let link = "https://www.youtube.com/embed/" + ele.id.videoId;
           return (
-            <div key={key}>
+            <div className="grid-item" key={key}>
               <iframe
                 width="560"
                 height="315"
